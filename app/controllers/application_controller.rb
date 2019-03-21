@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
 		}
 	end
 
-	def fail_to_save (message)
+	def problem (message)
 		render :json => {
 			statusCode: 201,
 			message: message

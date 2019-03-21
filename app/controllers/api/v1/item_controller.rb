@@ -1,6 +1,6 @@
 module Api::V1
 	class ItemController < ApplicationController
-		def addItem
+		def add
 			if check_token
 				@name = params[:name]
 				@item_type = params[:item_type]
@@ -19,7 +19,7 @@ module Api::V1
 			end
 		end
 
-		def getItem
+		def getOne
 			if check_token
 				@query = params[:query]
 				@query = @query.downcase

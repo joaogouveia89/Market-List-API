@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_231929) do
+ActiveRecord::Schema.define(version: 2019_03_21_001925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2019_03_20_231929) do
     t.integer "item_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "market_lists", force: :cascade do |t|
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_market_lists_on_item_id"
   end
 
   create_table "markets", force: :cascade do |t|
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_231929) do
     t.index ["market_id_id"], name: "index_shoppings_on_market_id_id"
   end
 
+  add_foreign_key "market_lists", "items"
   add_foreign_key "shopping_items", "items"
   add_foreign_key "shopping_items", "shoppings"
 end
